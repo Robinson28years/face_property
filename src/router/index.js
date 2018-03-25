@@ -123,7 +123,7 @@ export const asyncRouterMap = [
       icon: 'chart'
     },
     children: [
-      { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: '业主进出', noCache: true }},
+      { path: 'owner', component: _import('visits/owner'), name: 'owner', meta: { title: '业主进出', noCache: true }},
       { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '访客进出', noCache: true }},
       { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true }},
     ]
