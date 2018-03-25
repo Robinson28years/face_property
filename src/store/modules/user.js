@@ -1,4 +1,4 @@
-import { loginByUsername, logout, getUserInfo } from '@/api/login'
+import { loginByEmail, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -45,11 +45,13 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+    LoginByEmail({ commit }, userInfo) {
+      console.log(userInfo.email)
+      // const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
-        loginByUsername(username, userInfo.password).then(response => {
+        loginByEmail(userInfo.email, userInfo.password).then(response => {
           const data = response.data
+          console.log(data.token)
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
           resolve()
@@ -62,10 +64,11 @@ const user = {
     // 获取用户信息
     GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        getUserInfo(state.token).then(response => {
-          if (!response.data) { // 由于mockjs 不支持自定义状态码只能这样hack
-            reject('error')
-          }
+        getUserInfo().then(response => {
+          // if (!response.data) { // 由于mockjs 不支持自定义状态码只能这样hack
+          //   reject('error')
+          // }
+          console.log(response.data)
           const data = response.data
           commit('SET_ROLES', data.roles)
           commit('SET_NAME', data.name)
