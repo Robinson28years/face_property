@@ -40,11 +40,11 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchData() {
-      fetchList().then(response => {
-        this.list = response.data.items.slice(0, 7)
-      })
-    }
+    // fetchData() {
+    //   fetchList().then(response => {
+    //     this.list = response.data.items.slice(0, 7)
+    //   })
+    // }
   }
 }
 </script>

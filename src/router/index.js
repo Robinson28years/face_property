@@ -67,7 +67,7 @@ export const asyncRouterMap = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
-    meta: { roles: ['admin'] }, // you can set roles in root nav
+    meta: { roles: ['admin', 'property'] }, // you can set roles in root nav
     children: [{
       path: 'index',
       component: _import('permission/index'),
@@ -75,7 +75,7 @@ export const asyncRouterMap = [
       meta: {
         title: 'permission',
         icon: 'lock',
-        roles: ['admin'] // or you can only set roles in sub nav
+        roles: ['admin', 'property'] // or you can only set roles in sub nav
       }
     }]
   },
