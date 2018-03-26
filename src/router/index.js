@@ -40,7 +40,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'refresh', noCache: true }
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
   },
 
@@ -70,13 +70,13 @@ export const asyncRouterMap = [
   //   }]
   // },
   {
-    path: '/icon',
+    path: '/register',
     component: Layout,
     children: [{
-      path: 'index',
-      component: _import('svg-icons/index'),
-      name: '人员注册',
-      meta: { title: '注册申请', icon: 'icon', noCache: true }
+      path: 'register',
+      component: _import('register/index'),
+      name: 'register',
+      meta: { title: '注册申请', icon: 'people', noCache: true }
     }]
   },
 
@@ -87,14 +87,14 @@ export const asyncRouterMap = [
     name: 'component-demo',
     meta: {
       title: '人员管理',
-      icon: 'component'
+      icon: 'peoples'
     },
     children: [
       // { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: '人员注册' }},
-      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: '业主管理' }},
-      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: '内部人员管理' }},
-      { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: '访客管理' }},
-      { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: '非注册人员管理' }},
+      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: '业主管理' ,icon: 'owner'}},
+      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: '内部人员管理' ,icon: 'property'}},
+      { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: '访客管理' ,icon: 'visiter'}},
+      { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: '非注册人员管理' ,icon: 'user2'}},
     ]
   },
 
@@ -105,11 +105,11 @@ export const asyncRouterMap = [
     name: 'charts',
     meta: {
       title: '权限管理',
-      icon: 'chart'
+      icon: 'lock'
     },
     children: [
-      { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: '大门权限', noCache: true }},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '楼幢权限', noCache: true }},
+      { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: '大门权限', noCache: true ,icon: 'door'}},
+      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '楼幢权限', noCache: true ,icon: 'building'}},
     ]
   },
 
@@ -120,12 +120,12 @@ export const asyncRouterMap = [
     name: 'charts2',
     meta: {
       title: '门禁进出情况',
-      icon: 'chart'
+      icon: 'visiter3'
     },
     children: [
-      { path: 'owner', component: _import('visits/owner'), name: 'owner', meta: { title: '业主进出', noCache: true }},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '访客进出', noCache: true }},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true }},
+      { path: 'owner', component: _import('visits/owner'), name: 'owner', meta: { title: '业主进出', noCache: true ,icon: 'owner'}},
+      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '访客进出', noCache: true ,icon: 'visiter'}},
+      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true ,icon: 'user2'}},
     ]
   },
 
@@ -138,11 +138,11 @@ export const asyncRouterMap = [
     name: 'errorPages',
     meta: {
       title: '门禁控制',
-      icon: '404'
+      icon: 'machine3'
     },
     children: [
-      { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: '大门控制', noCache: true }},
-      { path: '404', component: _import('errorPage/404'), name: 'page404', meta: { title: '楼幢控制', noCache: true }}
+      { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: '大门控制', noCache: true ,icon: 'door'}},
+      { path: '404', component: _import('errorPage/404'), name: 'page404', meta: { title: '楼幢控制', noCache: true ,icon: 'building'}}
     ]
   },
 
@@ -154,7 +154,7 @@ export const asyncRouterMap = [
       path: 'index',
       component: _import('svg-icons/index'),
       name: 'icon2',
-      meta: { title: '设备运行情况', icon: 'icon', noCache: true }
+      meta: { title: '设备运行情况', icon: 'machine2', noCache: true }
     }]
   },
 
