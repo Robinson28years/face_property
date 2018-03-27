@@ -40,7 +40,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+      meta: { title: 'dashboard', icon: 'dashboard',roles: ['admin', 'property'], noCache: true }
     }]
   },
 
@@ -69,29 +69,29 @@ export const asyncRouterMap = [
   //     }
   //   }]
   // },
-  {
-    path: '/register',
-    component: Layout,
-    children: [{
-      path: 'register',
-      component: _import('register/index'),
-      name: 'register',
-      meta: { title: '注册申请', icon: 'people', noCache: true }
-    }]
-  },
+  // {
+  //   path: '/register',
+  //   component: Layout,
+  //   children: [{
+  //     path: 'register',
+  //     component: _import('register/index'),
+  //     name: 'register',
+  //     meta: { title: '注册申请', icon: 'people', noCache: true }
+  //   },]
+  // },
 
   {
-    path: '/components',
+    path: '/manager',
     component: Layout,
     redirect: 'noredirect',
-    name: 'component-demo',
+    name: 'manager',
     meta: {
       title: '人员管理',
       icon: 'peoples'
     },
     children: [
       // { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: '人员注册' }},
-      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: '业主管理' ,icon: 'owner'}},
+      { path: 'owner', component: _import('manager/owner'), name: 'owner', meta: { title: '业主管理' ,icon: 'owner'}},
       { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: '内部人员管理' ,icon: 'property'}},
       { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: '访客管理' ,icon: 'visiter'}},
       { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: '非注册人员管理' ,icon: 'user2'}},
