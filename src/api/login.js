@@ -13,10 +13,10 @@ export function loginByEmail(email, password) {
 }
 
 export function logout() {
-  return request({
-    url: '/login/logout',
-    method: 'post'
-  })
+  // return request({
+  //   url: '/login/logout',
+  //   method: 'post'
+  // })
 }
 
 export function getUserInfo() {

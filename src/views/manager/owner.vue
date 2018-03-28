@@ -160,7 +160,7 @@
 
 <script>
 import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
-import { createUser } from '@/api/manager'
+import { createUser,createAddress,getFaceId,createUserAddress } from '@/api/manager'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import baseURL from '../../../config/api'
@@ -235,6 +235,11 @@ export default {
       temp3:{
         pic_path:'',
       },
+      temp4:{
+        user:'',
+        face_id:'',
+        address:'',
+      },
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
@@ -271,14 +276,36 @@ export default {
       submit(){
         let user;
         let address;
-        createUser({
-          'name' : this.temp.name,
-          'email': this.temp.email,
-          'phone': this.temp.phone,
-          'password':this.temp.password
+        let face_id;
+        getFaceId({
+          'pic_path':this.temp3.pic_path
+        }).then(res => {
+          face_id = res.data.face_id;
+            createUser({
+              'name' : this.temp.name,
+              'email': this.temp.email,
+              'phone': this.temp.phone,
+              'password':this.temp.password,
+              'face_id': face_id
 
-        }).then(response => {
-          console.log(response.data);
+            }).then(response => {
+              console.log(response.data);
+              user = response.data.data;
+              createAddress({
+                'building_id': this.temp2.building_id,
+                'unit_id': this.temp2.unit_id,
+                'room_id': this.temp2.room_id,
+              }).then(res => {
+                console.log(res.data);
+                address = res.data.data;
+                        createUserAddress(address.id,{
+                          'user_id':user.id,
+                          'role_id': 5,
+                        }).then(res => {
+                          console.log(res);
+                        })
+              })
+            })
         })
       },
       handleAvatarSuccess(res, file) {
