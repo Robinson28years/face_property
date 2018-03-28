@@ -92,8 +92,8 @@ export const asyncRouterMap = [
     children: [
       // { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: '人员注册' }},
       { path: 'owner', component: _import('manager/owner'), name: 'owner', meta: { title: '业主管理' ,icon: 'owner'}},
-      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: '内部人员管理' ,icon: 'property'}},
-      { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: '访客管理' ,icon: 'visiter'}},
+      { path: 'property', component: _import('manager/property'), name: 'property', meta: { title: '内部人员管理' ,icon: 'property'}},
+      { path: 'visiter', component: _import('manager/visiter'), name: 'visiter', meta: { title: '访客管理' ,icon: 'visiter'}},
       { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: '非注册人员管理' ,icon: 'user2'}},
     ]
   },

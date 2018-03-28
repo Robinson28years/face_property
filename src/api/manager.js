@@ -31,3 +31,19 @@ export function getFaceId(data) {
       data
     })
 }
+
+export function fetchList(query) {
+    return request({
+      url: '/user_owner',
+      method: 'get',
+      params: query
+    })
+}
+
+export function fetchPropertyList(query) {
+    return request({
+      url: '/user_property',
+      method: 'get',
+      params: query
+    })
+}
