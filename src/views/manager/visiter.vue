@@ -18,7 +18,7 @@
       <el-button class="filter-item" type="primary" v-waves icon="el-icon-search" @click="handleFilter">{{$t('table.search')}}</el-button>
       <el-button class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="el-icon-edit">{{$t('table.add')}}</el-button>
       <el-button class="filter-item" type="primary" :loading="downloadLoading" v-waves icon="el-icon-download" @click="handleDownload">{{$t('table.export')}}</el-button>
-      <el-checkbox class="filter-item" style='margin-left:15px;' @change='tableKey=tableKey+1' v-model="showReviewer">{{$t('table.reviewer')}}</el-checkbox>
+      <el-checkbox class="filter-item" style='margin-left:15px;' @change='tableKey=tableKey+1' v-model="showReviewer">授权者</el-checkbox>
     </div>
 
     <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit highlight-current-row
@@ -33,25 +33,25 @@
           <span>{{scope.row.created_at}}</span>
         </template>
       </el-table-column>
-      <el-table-column min-width="150px" align="center" label="住址">
+      <el-table-column min-width="150px" align="center" label="访问住址">
         <template slot-scope="scope">
           <span class="link-type" @click="handleUpdate(scope.row)">{{scope.row.address.building_id}}幢{{scope.row.address.unit_id}}单元{{scope.row.address.room_id}}</span>
           <el-tag>金桥文苑</el-tag>
         </template>
       </el-table-column>
-      <el-table-column width="150px" align="center" label="手机号">
+      <el-table-column width="150px" align="center" label="昵称">
         <template slot-scope="scope">
-          <span>{{scope.row.phone}}</span>
+          <span>{{scope.row.nickname}}</span>
         </template>
       </el-table-column>
-      <el-table-column width="110px" align="center" label="业主">
+      <el-table-column width="110px" align="center" label="授权者">
         <template slot-scope="scope">
-          <span>{{scope.row.name}}</span>
+          <span>{{scope.row.grantor}}</span>
         </template>
       </el-table-column>
-      <el-table-column width="110px" v-if='showReviewer' align="center" :label="$t('table.reviewer')">
+      <el-table-column width="110px" v-if='showReviewer' align="center" label="授权者">
         <template slot-scope="scope">
-          <span style='color:red;'>{{scope.row.reviewer}}</span>
+          <span style='color:red;'>{{scope.row.grantor}}</span>
         </template>
       </el-table-column>
       <!-- <el-table-column width="80px" :label="$t('table.importance')">
@@ -59,16 +59,17 @@
           <svg-icon v-for="n in +scope.row.importance" icon-class="star" class="meta-item__icon" :key="n"></svg-icon>
         </template>
       </el-table-column> -->
-      <el-table-column align="center" label="绑定访客数" width="95">
+      <!-- <el-table-column align="center" label="绑定访客数" width="95">
         <template slot-scope="scope">
           <span class="link-type">{{scope.row.visiter_num}}</span>
         </template>
-      </el-table-column>
-      <!-- <el-table-column class-name="status-col" :label="$t('table.status')" width="100">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{scope.row.status}}</el-tag>
-        </template>
       </el-table-column> -->
+      <el-table-column class-name="status-col" label="角色" width="100">
+        <template slot-scope="scope">
+            <el-tag type="success">{{scope.row.role}}</el-tag>
+          <!-- <el-tag :type="scope.row.status | statusFilter">{{scope.row.status}}</el-tag> -->
+        </template>
+      </el-table-column>
       <el-table-column align="center" :label="$t('table.actions')" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{$t('table.edit')}}</el-button>
@@ -160,7 +161,7 @@
 
 <script>
 import { fetchPv, createArticle, updateArticle } from '@/api/article'
-import { createUser,createAddress,getFaceId,createUserAddress,fetchList } from '@/api/manager'
+import { createUser,createAddress,getFaceId,createUserAddress,fetchList,fetchVisiterList } from '@/api/manager'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import baseURL from '../../../config/api'
@@ -341,7 +342,7 @@ export default {
       },
     getList() {
       this.listLoading = true
-      fetchList(this.listQuery).then(response => {
+      fetchVisiterList(this.listQuery).then(response => {
         //   console.log(response.data.data[0].address.id)
         this.list = response.data.data
         // this.total = response.data.total

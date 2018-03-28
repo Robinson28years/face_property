@@ -47,3 +47,11 @@ export function fetchPropertyList(query) {
       params: query
     })
 }
+
+export function fetchVisiterList(query) {
+    return request({
+      url: '/user_visiter',
+      method: 'get',
+      params: query
+    })
+}
