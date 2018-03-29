@@ -11,6 +11,6 @@ export function setToken(token) {
 }
 
 export function removeToken() {
-  return window.localStorage.clear()
+  return window.localStorage.removeItem(TokenKey) 
   // return window.localStorage.remove(TokenKey)
 }
