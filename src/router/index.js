@@ -123,8 +123,8 @@ export const asyncRouterMap = [
       icon: 'visiter3'
     },
     children: [
-      { path: 'owner', component: _import('visits/owner'), name: 'owner', meta: { title: '业主进出', noCache: true ,icon: 'owner'}},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '访客进出', noCache: true ,icon: 'visiter'}},
+      { path: 'owner', component: _import('visits/owner2'), name: 'owner', meta: { title: '业主进出', noCache: true ,icon: 'owner'}},
+      { path: 'line', component: _import('visits/owner3'), name: 'lineChart', meta: { title: '访客进出', noCache: true ,icon: 'visiter'}},
       { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true ,icon: 'user2'}},
     ]
   },

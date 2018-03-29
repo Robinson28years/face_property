@@ -3,60 +3,78 @@
 	<h1>人员进出情况</h1>
 	<p class="leader">All cards must be the same height and width for space calculations on large screens.</p>
 	<div class="demo-card-wrapper">
-    <!-- <div > -->
-      <div class="demo-card demo-card--step1" v-for="item in items" :key="item.key">
-        <div class="head">
-          <div class="number-box">
-            <span>暂行</span>
-          </div>
-          <h2><span class="small">2018-03-15 17:52:22</span><span class="small">1幢2单元302</span>萝卜森</h2>
-        </div>
-        <div class="body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-          <img src="http://placehold.it/1000x500" alt="Graphic">
-        </div>
-      </div>
-      
-    <!-- </div> -->
+		<div class="demo-card demo-card--step1">
+			<div class="head">
+				<div class="number-box">
+					<span>暂行</span>
+				</div>
+				<h2><span class="small">2018-03-15 17:52:22</span><span class="small">1幢2单元302</span>萝卜森</h2>
+			</div>
+			<div class="body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+				<img src="http://placehold.it/1000x500" alt="Graphic">
+			</div>
+		</div>
 
+		<div class="demo-card demo-card--step2">
+			<div class="head">
+				<div class="number-box">
+					<span>02</span>
+				</div>
+				<h2><span class="small">Subtitle</span> Confidence</h2>
+			</div>
+			<div class="body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+				<img src="http://placehold.it/1000x500" alt="Graphic">
+			</div>
+		</div>
+
+		<div class="demo-card demo-card--step3">
+			<div class="head">
+				<div class="number-box">
+					<span>03</span>
+				</div>
+				<h2><span class="small">Subtitle</span> Adaptation</h2>
+			</div>
+			<div class="body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+				<img src="http://placehold.it/1000x500" alt="Graphic">
+			</div>
+		</div>
+
+		<div class="demo-card demo-card--step4">
+			<div class="head">
+				<div class="number-box">
+					<span>04</span>
+				</div>
+				<h2><span class="small">Subtitle</span> Consistency</h2>
+			</div>
+			<div class="body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+				<img src="http://placehold.it/1000x500" alt="Graphic">
+			</div>
+		</div>
+
+		<div class="demo-card demo-card--step5">
+			<div class="head">
+				<div class="number-box">
+					<span>05</span>
+				</div>
+				<h2><span class="small">Subtitle</span> Conversion</h2>
+			</div>
+			<div class="body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
+				<img src="http://placehold.it/1000x500" alt="Graphic">
+			</div>
+		</div>
     
 	</div>
 </section>
 </template>
 
 <script>
-import { fetchList } from '@/api/visit'
 
-export default {
-  mounted(){
-    for(let i=0;i<15;i++){
-      this.items.push(i);
-    }
-    // this.items = ['a','b','c','d','e','f'];
-    // this.getList();
-
-  },
-  data(){
-    return {
-      items:[],
-
-    }
-  },
-  methods:{
-    
-    getList() {
-      fetchList(this.listQuery).then(response => {
-        //   console.log(response.data.data[0].address.id)
-        this.items = response.data.data
-        // this.total = response.data.total
-      })
-    },
-  }
-
-  
-}
 </script>
-
 
 <style lang="scss">
 /* Media Queries */
@@ -88,7 +106,7 @@ export default {
 $background: #f7f7f7;
 $box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
 $border: 1px solid rgba(191, 191, 191, 0.4);
-$items: 15;
+$items: 5;
 $rows: ceil($items/2);
 
 /* Card sizing */
