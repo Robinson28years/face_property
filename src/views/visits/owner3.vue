@@ -3,34 +3,32 @@
 <div class="container-fluid">
     <div class="row example-centered">
         <div class="col-md-12 example-title">
-            <h2>Centered Timeline</h2>
+            <h2>人员进出情况</h2>
             <p>Medium devices (desktops, 992px and up).</p>
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
             <ul class="timeline timeline-centered">
                 <li class="timeline-item" v-for="item in items" :key="item.key">
                     <div class="timeline-info">
-                        <span>{{item.visit_time}}</span>
+                        <span v-if="item.result=='未通过'">{{item.visit_time}} <span style="color:red;">{{item.result}}</span></span>
+                        <span v-else>{{item.visit_time}} <span style="color:green;">{{item.result}}</span></span>
+                        
                     </div>
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <h3 class="timeline-title">{{item.nickname}}</h3>
-                        <!-- <p>{{item.address.buiding_id}}</p> -->
-                        <p>1幢2单元302</p>
-                        <el-row>
-                        <el-col :span="24" >
-                          <el-card :body-style="{ padding: '0px' }">
+                        <p>访问地址：{{item.address.building_id}}幢{{item.address.unit_id}}单元{{item.address.room_id}}号</p>
+                        <p>角色：{{item.role.alias}}</p>
+                        <img :src="'http://127.0.0.1:8000/api/v1/' + item.pic" class="image">
+                        <!-- <p>1幢2单元302</p> -->
+                        <!-- <el-row justify="center">
+                        <el-col :span="11" >
+                          <el-card>
+
                             <img :src="'http://127.0.0.1:8000/api/v1/' + item.pic" class="image">
-                            <div style="padding: 0px;">
-                              <span>好吃的汉堡</span>
-                              <div class="bottom clearfix">
-                                <time class="time">{{ currentDate }}</time>
-                                <el-button type="text" class="button">操作按钮</el-button>
-                              </div>
-                            </div>
                           </el-card>
                         </el-col>
-                      </el-row>
+                      </el-row> -->
                     </div>
                     
                 </li>
@@ -71,7 +69,7 @@ export default {
     getList() {
       fetchList(this.listQuery).then(response => {
         //   console.log(response.data.data[0].address.id)
-        this.items = response.data.data
+        this.items = response.data.data.reverse();
         // this.total = response.data.total
       })
     },
@@ -83,6 +81,13 @@ export default {
 
 
 <style lang="scss">
+
+
+  .image {
+    width: 320px;
+  }
+
+
 $primary-color: #FF6B6B;
 $primary-color-hover: scale-color($primary-color, $lightness: 32%);
 

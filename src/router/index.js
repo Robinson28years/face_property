@@ -114,10 +114,10 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/charts2',
+    path: '/visits',
     component: Layout,
     redirect: 'noredirect',
-    name: 'charts2',
+    name: 'visits',
     meta: {
       title: '门禁进出情况',
       icon: 'visiter3'
@@ -132,7 +132,7 @@ export const asyncRouterMap = [
 
 
   {
-    path: '/error',
+    path: '/controller',
     component: Layout,
     redirect: 'noredirect',
     name: 'errorPages',
@@ -142,7 +142,7 @@ export const asyncRouterMap = [
     },
     children: [
       { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: '大门控制', noCache: true ,icon: 'door'}},
-      { path: '404', component: _import('errorPage/404'), name: 'page404', meta: { title: '楼幢控制', noCache: true ,icon: 'building'}}
+      { path: '404', component: _import('controller/index'), name: 'page404', meta: { title: '楼幢控制', noCache: true ,icon: 'building'}}
     ]
   },
 
