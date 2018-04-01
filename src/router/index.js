@@ -113,20 +113,31 @@ export const asyncRouterMap = [
     ]
   },
 
+  // {
+  //   path: '/visits',
+  //   component: Layout,
+  //   redirect: 'noredirect',
+  //   name: 'visits',
+  //   meta: {
+  //     title: '门禁进出情况',
+  //     icon: 'visiter3'
+  //   },
+  //   children: [
+  //     { path: 'owner', component: _import('visits/owner2'), name: 'owner', meta: { title: '业主进出', noCache: true ,icon: 'owner'}},
+  //     { path: 'line', component: _import('visits/owner3'), name: 'lineChart', meta: { title: '门禁进出情况', noCache: true ,icon: 'visiter'}},
+  //     { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true ,icon: 'user2'}},
+  //   ]
+  // },
+
   {
     path: '/visits',
     component: Layout,
-    redirect: 'noredirect',
-    name: 'visits',
-    meta: {
-      title: '门禁进出情况',
-      icon: 'visiter3'
-    },
-    children: [
-      { path: 'owner', component: _import('visits/owner2'), name: 'owner', meta: { title: '业主进出', noCache: true ,icon: 'owner'}},
-      { path: 'line', component: _import('visits/owner3'), name: 'lineChart', meta: { title: '访客进出', noCache: true ,icon: 'visiter'}},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '非注册人员情况', noCache: true ,icon: 'user2'}},
-    ]
+    children: [{
+      path: 'index',
+      component: _import('visits/owner3'),
+      name: 'visit',
+      meta: { title: '门禁进出情况', icon: 'visiter3', noCache: true }
+    }]
   },
 
 

@@ -4,7 +4,7 @@
     <div class="row example-centered">
         <div class="col-md-12 example-title">
             <h2>人员进出情况</h2>
-            <p>Medium devices (desktops, 992px and up).</p>
+            <p>Situation of personnel entering and leaving.</p>
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
             <ul class="timeline timeline-centered">
