@@ -20,6 +20,8 @@
                         <h3 class="timeline-title">{{item.nickname}}</h3>
                         <p>访问地址：{{item.address.building_id}}幢{{item.address.unit_id}}单元{{item.address.room_id}}号</p>
                         <p>角色：{{item.role.alias}}</p>
+                        <p v-if="item.attendant_num>0">随行人员： &lt;{{item.attendant_num}}人</p>
+                        <p v-else>随行人员：无</p>
                         <img :src="'http://127.0.0.1:8000/api/v1/' + item.pic" class="image">
                         <!-- <p>1幢2单元302</p> -->
                         <!-- <el-row justify="center">
@@ -59,6 +61,9 @@ export default {
     this.getList();
     this.initWebSocket();
     this.threadPoxi();
+    // this.websocketsend(JSON.stringify({
+    //                     "type":"admin",
+    //                 }));
     // this.$options.sockets.onmessage = (data) => console.log(data)
 
   },
@@ -101,17 +106,17 @@ export default {
                  //若是ws开启状态
                 if (this.websock.readyState === this.websock.OPEN) {
                     console.log("okokokok");
-                    this.websocketsend(JSON.stringify(
-                        {
-                            "type":"admin",
-                        }
-                    ))
+                    this.websocketsend(JSON.stringify({
+                        "type":"admin",
+                    }))
                 }
                 // 若是 正在开启状态，则等待300毫秒
                 else if (this.websock.readyState === this.websock.CONNECTING) {
                     let that = this;//保存当前对象this
                     setTimeout(function () {
-                        that.websocketsend(agentData)
+                        that.websocketsend(JSON.stringify({
+                        "type":"admin",
+                    }))
                     }, 300);
                 }
                 // 若未开启 ，则等待500毫秒
@@ -119,7 +124,9 @@ export default {
                     this.initWebSocket();
                     let that = this;//保存当前对象this
                     setTimeout(function () {
-                        that.websocketsend(agentData)
+                        that.websocketsend(JSON.stringify({
+                        "type":"admin",
+                    }))
                     }, 500);
                 }
             },
@@ -127,6 +134,7 @@ export default {
                 //ws地址
                 const wsuri = "ws://118.24.0.78:9505";
                 this.websock = new WebSocket(wsuri);
+                this.websock.onopen = () => this.websock.send('hello');
                 this.websock.onmessage = this.websocketonmessage;
                 this.websock.onclose = this.websocketclose;
             },
