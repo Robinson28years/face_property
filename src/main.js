@@ -19,6 +19,9 @@ import './permission' // permission control
 
 import * as filters from './filters' // global filters
 
+// import VueNativeSock from 'vue-native-websocket'
+// Vue.use(VueNativeSock, 'ws://118.24.0.78:9505')
+
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)

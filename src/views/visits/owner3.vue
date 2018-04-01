@@ -11,7 +11,8 @@
                 <li class="timeline-item" v-for="item in items" :key="item.key">
                     <div class="timeline-info">
                         <span v-if="item.result=='未通过'">{{item.visit_time}} <span style="color:red;">{{item.result}}</span></span>
-                        <span v-else>{{item.visit_time}} <span style="color:green;">{{item.result}}</span></span>
+                        <span v-else-if="item.result=='通过'">{{item.visit_time}} <span style="color:green;">{{item.result}}</span></span>
+                        <span v-else-if="item.result=='出门禁'">{{item.visit_time}} <span style="color:#e6a23c;">{{item.result}}</span></span>
                         
                     </div>
                     <div class="timeline-marker"></div>
@@ -45,16 +46,20 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/visit'
+import { fetchList,fetchLastList } from '@/api/visit'
 import baseURL from '../../../config/api'
 
+
 export default {
-  mounted(){
+  created(){
     // for(let i=0;i<20;i++){
     //   this.items.push(i);
     // }
     // this.items = ['a','b','c','d','e','f'];
     this.getList();
+    this.initWebSocket();
+    this.threadPoxi();
+    // this.$options.sockets.onmessage = (data) => console.log(data)
 
   },
   data(){
@@ -73,6 +78,99 @@ export default {
         // this.total = response.data.total
       })
     },
+    open3() {
+        this.$notify({
+          title: '注意',
+          message: '有人员进入',
+          type: 'warning'
+        });
+    },
+    open4() {
+        this.$notify({
+          title: '提醒',
+          message: '门禁已关闭',
+          type: 'success'
+        });
+    },
+
+            threadPoxi(){  // 实际调用的方法
+                //参数
+                const agentData =JSON.stringify({
+                        "type":"admin",
+                    });
+                 //若是ws开启状态
+                if (this.websock.readyState === this.websock.OPEN) {
+                    console.log("okokokok");
+                    this.websocketsend(JSON.stringify(
+                        {
+                            "type":"admin",
+                        }
+                    ))
+                }
+                // 若是 正在开启状态，则等待300毫秒
+                else if (this.websock.readyState === this.websock.CONNECTING) {
+                    let that = this;//保存当前对象this
+                    setTimeout(function () {
+                        that.websocketsend(agentData)
+                    }, 300);
+                }
+                // 若未开启 ，则等待500毫秒
+                else {
+                    this.initWebSocket();
+                    let that = this;//保存当前对象this
+                    setTimeout(function () {
+                        that.websocketsend(agentData)
+                    }, 500);
+                }
+            },
+            initWebSocket(){ //初始化weosocket
+                //ws地址
+                const wsuri = "ws://118.24.0.78:9505";
+                this.websock = new WebSocket(wsuri);
+                this.websock.onmessage = this.websocketonmessage;
+                this.websock.onclose = this.websocketclose;
+            },
+            websocketonmessage(e){ //数据接收
+                const redata = JSON.parse(e.data);
+                console.log(e.data);
+                // this.$options.methods.getList();
+                // this.getList();
+                //todo::了解函数间的调用
+                console.log("kkk"+redata.open);
+                console.log(redata.open==1);
+                if(redata.open == 1) {
+                    this.open3();
+                    this.items=[];
+                    this.getList();
+                }else{
+                    this.open4();
+                }
+                
+                // location.reload();
+                // $router.go(0);
+                // fetchLastList(this.listQuery).then(response => {
+                //         //   console.log(response.data.data[0].address.id)
+                //         // this.items.push(response.data.data);
+                //         console.log(this.items);
+                //         // this.total = response.data.total
+                //     })
+                // this.items.push(1);
+                    //   fetchList(this.listQuery).then(response => {
+                    //         //   console.log(response.data.data[0].address.id)
+                    //         // this.items = response.data.data.reverse();
+                    //         // that.$route.router.go(0);
+                    //         console.log("kookokokokok");
+                    //         // this.total = response.data.total
+                    //     })
+            },
+            websocketsend(agentData){//数据发送
+                this.websock.send(agentData);
+            },
+            websocketclose(e){  //关闭
+                console.log("connection closed (" + e.code + ")");
+            }
+
+
   }
 
   

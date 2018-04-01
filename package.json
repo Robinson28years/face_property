@@ -36,6 +36,7 @@
     "vue-cute-timeline": "^1.2.4",
     "vue-i18n": "7.3.2",
     "vue-multiselect": "2.0.8",
+    "vue-native-websocket": "^2.0.6",
     "vue-router": "3.0.1",
     "vue-splitpane": "1.0.2",
     "vue-timeline": "^0.1.0",
