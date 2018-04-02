@@ -56,7 +56,7 @@ export default {
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['Industries', 'Technology', 'Forex', 'Gold', 'Forecasts']
+          data: ['业主', '暂行', '未注册人员', '家人', '亲戚']
         },
         calculable: true,
         series: [
@@ -67,11 +67,11 @@ export default {
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 320, name: 'Industries' },
-              { value: 240, name: 'Technology' },
-              { value: 149, name: 'Forex' },
-              { value: 100, name: 'Gold' },
-              { value: 59, name: 'Forecasts' }
+              { value: 320, name: '业主' },
+              { value: 240, name: '暂行' },
+              { value: 149, name: '未注册人员' },
+              { value: 100, name: '家人' },
+              { value: 59, name: '亲戚' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600
