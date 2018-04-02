@@ -75,7 +75,7 @@ export default {
     }
   },
   methods:{
-    
+
     getList() {
       fetchList(this.listQuery).then(response => {
         //   console.log(response.data.data[0].address.id)
@@ -86,7 +86,7 @@ export default {
     open3() {
         this.$notify({
           title: '注意',
-          message: '有人员进入',
+          message: '门禁已开启！',
           type: 'warning'
         });
     },
@@ -107,7 +107,7 @@ export default {
                 if (this.websock.readyState === this.websock.OPEN) {
                     console.log("okokokok");
                     this.websocketsend(JSON.stringify({
-                        "type":"admin",
+                        "type":"admin2",
                     }))
                 }
                 // 若是 正在开启状态，则等待300毫秒
@@ -115,7 +115,7 @@ export default {
                     let that = this;//保存当前对象this
                     setTimeout(function () {
                         that.websocketsend(JSON.stringify({
-                        "type":"admin",
+                        "type":"admin3",
                     }))
                     }, 300);
                 }
@@ -125,7 +125,7 @@ export default {
                     let that = this;//保存当前对象this
                     setTimeout(function () {
                         that.websocketsend(JSON.stringify({
-                        "type":"admin",
+                        "type":"admin1",
                     }))
                     }, 500);
                 }
@@ -134,7 +134,9 @@ export default {
                 //ws地址
                 const wsuri = "ws://118.24.0.78:9505";
                 this.websock = new WebSocket(wsuri);
-                this.websock.onopen = () => this.websock.send('hello');
+                this.websock.onopen = () => this.websock.send(JSON.stringify({
+                        "type":"admin",
+                    }));
                 this.websock.onmessage = this.websocketonmessage;
                 this.websock.onclose = this.websocketclose;
             },
