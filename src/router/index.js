@@ -99,17 +99,17 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/charts',
+    path: '/power',
     component: Layout,
     redirect: 'noredirect',
-    name: 'charts',
+    name: 'power',
     meta: {
       title: '权限管理',
       icon: 'lock'
     },
     children: [
-      { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: '大门权限', noCache: true ,icon: 'door'}},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: '楼幢权限', noCache: true ,icon: 'building'}},
+      { path: 'door', component: _import('power/door'), name: 'power', meta: { title: '大门权限', noCache: true ,icon: 'door'}},
+      { path: 'index', component: _import('power/index'), name: 'index', meta: { title: '楼幢权限', noCache: true ,icon: 'building'}},
     ]
   },
 
@@ -146,24 +146,24 @@ export const asyncRouterMap = [
     path: '/controller',
     component: Layout,
     redirect: 'noredirect',
-    name: 'errorPages',
+    name: 'controller',
     meta: {
       title: '门禁控制',
       icon: 'machine3'
     },
     children: [
-      { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: '大门控制', noCache: true ,icon: 'door'}},
-      { path: '404', component: _import('controller/index'), name: 'page404', meta: { title: '楼幢控制', noCache: true ,icon: 'building'}}
+      { path: 'door', component: _import('controller/door'), name: 'door', meta: { title: '大门控制', noCache: true ,icon: 'door'}},
+      { path: 'index', component: _import('controller/index'), name: 'index', meta: { title: '楼幢控制', noCache: true ,icon: 'building'}}
     ]
   },
 
 
   {
-    path: '/icon2',
+    path: '/state',
     component: Layout,
     children: [{
       path: 'index',
-      component: _import('svg-icons/index'),
+      component: _import('state/index'),
       name: 'icon2',
       meta: { title: '设备运行情况', icon: 'machine2', noCache: true }
     }]
