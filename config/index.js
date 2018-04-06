@@ -50,11 +50,11 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '/home/robinson/Code/face-recognition-entrance-guard/resources/views/property.blade.php'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsRoot: path.resolve(__dirname, '/home/robinson/Code/face-recognition-entrance-guard/public'),
+    assetsSubDirectory: 'static1',
 
     // you can set by youself according to actual condition
     assetsPublicPath: './',
