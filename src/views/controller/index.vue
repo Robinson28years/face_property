@@ -1,6 +1,6 @@
 <template>
 <el-row :gutter="20">
-    <el-col :span="5" :offset="2" style="margin-top:5%;" v-for="item in items" :key="item.key">
+    <el-col :span="10" :offset="2" style="margin-top:5%;" v-for="item in items" :key="item.key">
     <el-card class="box-card">
     <div slot="header" class="clearfix">
         <span>{{item.building_id}}幢</span>
@@ -14,12 +14,18 @@
         inactive-text="关">
         </el-switch>
     </div>
-    <div class="text item">
+    <div v-if="item.building_id==1" class="text item ">
+        <iframe class="plus" ref="iframe" src="http://118.24.0.78:8082/index.html" ></iframe>
+    </div>
+    <div v-else>
+      <img src="http://otj6w86xd.bkt.clouddn.com/images.png" alt="">
+    </div>
+    <!-- <div class="text item">
         {{'维修人员： ' + item.fix_name }}
     </div>
     <div class="text item">
         {{'今日门禁开启次数： ' + item.inout_num }}
-    </div>
+    </div> -->
     </el-card>
   </el-col>
 </el-row>
@@ -119,6 +125,10 @@ export default {
 
 
 <style>
+  .plus {
+    height: 460px;
+    width: 360px;
+  }
   .text {
     font-size: 14px;
   }
@@ -137,7 +147,8 @@ export default {
   }
 
   .box-card {
-    width: 380px;
+    height: 550px;
+    width: 400px;
   }
 </style>
 

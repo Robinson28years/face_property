@@ -145,13 +145,13 @@
 	long:'20588206',
 			date: '2016-05-02',
 			name: '三幢',
-			address: '广西壮族自治区钦州市钦南区',
+			address: '三幢',
 	error: '门禁开关失效'
 		}, {
 	long:'21809798',
 			date: '2016-05-04',
 			name: '三幢',
-			address: '广西壮族自治区钦州市钦南区',
+			address: '三幢',
 	error: '系统关闭'
 		}]
       }
@@ -160,14 +160,14 @@
       handleEdit(index, row) {
 		  this.$notify({
             title: '已发送',
-            message: '已通知执法人员前往现场处理',
+            message: '已通知物业专员前往现场查看',
             type: 'success'
           });
       },
       handleDelete(index, row) {
 		  this.$notify({
   		  title: '已发送',
-  		  message: '已向企业联系人发送异常信息',
+  		  message: '已向厂家技术人员发送异常信息',
   		  type: 'success'
   		});
       }

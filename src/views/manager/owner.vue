@@ -249,9 +249,9 @@ export default {
       dialogPvVisible: false,
       pvData: [],
       rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        type: [{ required: false, message: 'type is required', trigger: 'change' }],
+        timestamp: [{ type: 'date', required: false, message: 'timestamp is required', trigger: 'change' }],
+        title: [{ required: false, message: 'title is required', trigger: 'blur' }]
       },
       downloadLoading: false
     }
