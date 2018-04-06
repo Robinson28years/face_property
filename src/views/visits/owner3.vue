@@ -22,7 +22,7 @@
                         <p>角色：{{item.role.alias}}</p>
                         <p v-if="item.attendant_num>0">随行人员： &lt;{{item.attendant_num}}人</p>
                         <p v-else>随行人员：无</p>
-                        <img :src="'http://127.0.0.1:8000/api/v1/' + item.pic" class="image">
+                        <img :src="'http://118.24.0.78:8000/api/v1/' + item.pic" class="image">
                         <!-- <p>1幢2单元302</p> -->
                         <!-- <el-row justify="center">
                         <el-col :span="11" >
